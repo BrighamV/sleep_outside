@@ -33,22 +33,20 @@ function getProductsData() {
 
 // add to cart button event handler
 function addToCart(e) {
-  // A new product is pushed onto the products array
   const product = products.find((item) => item.Id === e.target.dataset.id);
-  // products.push(product);
+    // A new product is pushed onto the cart
   cart.push(product);
-  // setLocalStorage("so-cart", products);
   setLocalStorage("so-cart", cart);
 }
 
 // loads up the current cart, when the page is loaded
 // this allows the cart to be added to
-function loadCart(){
+function loadCart() {
   let currentCart = getLocalStorage("so-cart");
-  if(currentCart != null){
+  if (currentCart != null) {
     // need to convert the cart to a JSON object
     currentCart = JSON.parse(currentCart);
-    for(var i of currentCart){
+    for (var i of currentCart) {
       cart.push(i);
     }
   }

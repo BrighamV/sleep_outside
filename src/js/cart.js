@@ -33,4 +33,3 @@ function renderCartItem(item) {
 }
 
 getCartContents();
-
