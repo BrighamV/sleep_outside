@@ -2,12 +2,11 @@ function getLocalStorage(key) {
   console.log(localStorage.getItem(key));
   console.log(JSON.parse(localStorage.getItem(key)));
   return JSON.parse(localStorage.getItem(key));
-  
 }
 
 function getCartContents() {
   let markup = "";
-  // this needs to be made into an array
+  // this needs to be made into an array (did this in product.js)
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => renderCartItem(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
@@ -34,3 +33,4 @@ function renderCartItem(item) {
 }
 
 getCartContents();
+
