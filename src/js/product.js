@@ -34,7 +34,7 @@ function getProductsData() {
 // add to cart button event handler
 function addToCart(e) {
   const product = products.find((item) => item.Id === e.target.dataset.id);
-    // A new product is pushed onto the cart
+  // A new product is pushed onto the cart
   cart.push(product);
   setLocalStorage("so-cart", cart);
 }
@@ -46,8 +46,9 @@ function loadCart() {
   if (currentCart != null) {
     // need to convert the cart to a JSON object
     currentCart = JSON.parse(currentCart);
-    for (var i of currentCart) {
-      cart.push(i);
+    // adds every item to the current cart
+    for (var cartItem of currentCart) {
+      cart.push(cartItem);
     }
   }
 }
