@@ -11,6 +11,10 @@ function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
+function getLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
 // get tents data
 function getProductsData() {
   fetch("../json/tents.json")
@@ -26,10 +30,15 @@ function getProductsData() {
 
 // add to cart button event handler
 function addToCart(e) {
+  console.log('clicked')
+  let cartItems = getLocalStorage("so-cart");
+  console.log(cartItems, typeof cartItems)
   const product = products.find((item) => item.Id === e.target.dataset.id);
-  setLocalStorage("so-cart", product);
+  cartItems.push(product)
+  setLocalStorage("so-cart", cartItems);
 }
 
 getProductsData();
 // add listener to Add to Cart button
+console.log(document)
 document.getElementById("addToCart").addEventListener("click", addToCart);
