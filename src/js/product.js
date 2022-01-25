@@ -1,4 +1,6 @@
 let products = [];
+let cart = [];
+
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -9,6 +11,11 @@ function convertToJson(res) {
 
 function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
+}
+
+// added to be able to get the storage
+function getLocalStorage(key) {
+  return localStorage.getItem(key);
 }
 
 // get tents data
@@ -27,14 +34,26 @@ function getProductsData() {
 // add to cart button event handler
 function addToCart(e) {
   const product = products.find((item) => item.Id === e.target.dataset.id);
-  // setLocalStorage("so-cart", product);
-  // trying to make it so multiple products can be in the cart at once
-  products.push(product);
-  setLocalStorage("so-cart", products);
-
-
+  // A new product is pushed onto the cart
+  cart.push(product);
+  setLocalStorage("so-cart", cart);
 }
 
+// loads up the current cart, when the page is loaded
+// this allows the cart to be added to
+function loadCart() {
+  let currentCart = getLocalStorage("so-cart");
+  if (currentCart != null) {
+    // need to convert the cart to a JSON object
+    currentCart = JSON.parse(currentCart);
+    // adds every item to the current cart
+    for (var cartItem of currentCart) {
+      cart.push(cartItem);
+    }
+  }
+}
+
+loadCart();
 getProductsData();
 // add listener to Add to Cart button
 document.getElementById("addToCart").addEventListener("click", addToCart);
