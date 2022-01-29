@@ -12,23 +12,6 @@ export default class ProductDetails {
     // A new product is pushed onto the cart
     this.cart.push(this.product);
     setLocalStorage("so-cart", this.cart);
-
-    const squareElement = document.querySelector(".cart");
-    let x = 1;
-    let y = 1;
-    
-    setInterval( () => {
-        if (x < 1.5) {
-          x += .1;
-          y += .1;
-        } else {
-          x = 1;
-          y = 1;
-        }
-        
-        squareElement.style.transform = `scale(${x},${y})`;
-    }, 1000/3);
-
   }
 
   renderProductDetails() {

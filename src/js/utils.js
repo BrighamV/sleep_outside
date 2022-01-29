@@ -30,3 +30,13 @@ export function getParams() {
 
   return product;
 }
+
+export function renderListWithTemplate(template, parent, list, callback) {
+  list.forEach((item) => {
+    if (item.ID != "989CG" || item.ID != "880RT") {
+      const clone = template.content.cloneNode(true);
+      const templateWithData = callback(clone, item);
+      parent.appendChild(templateWithData);
+    }
+  });
+}

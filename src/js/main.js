@@ -2,5 +2,9 @@ import ProductData from "./productData.js";
 import ProductListing from "./productList.js";
 
 const data = new ProductData("tents");
-const list = new ProductListing("tents", data, document.querySelector(".product-list"));
+const list = new ProductListing(
+  "tents",
+  data,
+  document.querySelector(".product-list")
+);
 list.init();
