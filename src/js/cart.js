@@ -25,9 +25,6 @@ function getCartContents() {
   const htmlItems = cartItems.map((item) => renderCartItem(item));
 
   document.querySelector(".product-list").innerHTML =  htmlItems.join("");
-  // document.getElementById(".cart-card__remove").addEventListener("click", removeFromCart);
-  // document.querySelector(".product-list").addEventListener("click", removeFromCart);
-
   // removing items from cart
   // you can add an event listener to the parent class, since that exists in the DOM
   // then check to see if what is clicked has the class "cart-card__remove"
@@ -51,6 +48,7 @@ function renderTotal(total) {
 function removeFromCart(id){
   // get the item to be removed
   const cartItems = getLocalStorage("so-cart");
+  console.log(cartItems);
   let newCart = [];
   let foundItem = false;
   // remove the item from so-cart
@@ -66,6 +64,7 @@ function removeFromCart(id){
       newCart.push(item);
     }
   }
+
   // set the new cart to the one without the removed item
   setLocalStorage("so-cart", newCart);
   // reload the cart contents on the page
