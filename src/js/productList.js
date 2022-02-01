@@ -14,4 +14,10 @@ export default class ProductList {
       this.listElement.appendChild(clone);
     });
   }
+  prepareTemplate(template, product) {
+    
+    template.querySelector("a").href +=  product.Id;
+    // fill in the rest of the data here... 
+    return template;
+  }
 }
