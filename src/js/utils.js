@@ -59,13 +59,12 @@ export async function loadTemplate(path) {
 }
 
 export async function loadHeaderFooter() {
-  const head = await loadTemplate("/partials/header.html");
-  const foot = await loadTemplate("/partials/footer.html");
+  const head = await loadTemplate("../partials/header.html");
+  const foot = await loadTemplate("../partials/footer.html");
   const header = document.getElementById("main-header");
   const footer = document.getElementById("main-footer");
   renderWithTemplate(head, header);
   renderWithTemplate(foot, footer);
-
 }
 function convertToText(res) {
   if (res.ok) {
