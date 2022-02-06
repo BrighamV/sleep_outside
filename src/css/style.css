@@ -159,6 +159,9 @@ button:hover {
 .card__name {
   font-size: 1em;
 }
+.card__discount{
+  color: var(--secondary-color);
+}
 /* End product list card */
 
 .product-detail {

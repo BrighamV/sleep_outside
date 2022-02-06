@@ -52,6 +52,7 @@ export default class ProductListing {
       product.NameWithoutBrand;
     template.querySelector(".product-card__price").textContent +=
       product.FinalPrice;
+    template.querySelector(".card__discount").textContent = Math.round((1 - (product.FinalPrice / product.SuggestedRetailPrice)) * 100) + "% off";
 
     return template;
   }

@@ -16,6 +16,7 @@ export default class ProductDetails {
 
   renderProductDetails() {
     // note will have to use specific names
+    let discount = Math.round((1 - (this.product.FinalPrice / this.product.SuggestedRetailPrice)) * 100);
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
         <h2 class="divider">${this.product.NameWithoutBrand}</h2>
         <img
@@ -24,6 +25,7 @@ export default class ProductDetails {
           alt="${this.product.NameWithoutBrand}"
         />
         <p class="product-card__price">$${this.product.FinalPrice}</p>
+        <p class="card__discount">${discount}% off</p>
         <p class="product__color">${this.product.Colors[0].ColorName}</p>
         <p class="product__description">
         ${this.product.DescriptionHtmlSimple}
