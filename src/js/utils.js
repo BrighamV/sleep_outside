@@ -41,11 +41,9 @@ export function renderListWithTemplate(template, parent, list, callback) {
   });
 }
 
-
 export function renderWithTemplate(template, parent, data, callback) {
-
-   let clone = template.content.cloneNode(true);
-  if(callback) {
+  let clone = template.content.cloneNode(true);
+  if (callback) {
     clone = callback(clone, data);
   }
   parent.appendChild(clone);
@@ -73,4 +71,3 @@ function convertToText(res) {
     throw new Error("Bad Response");
   }
 }
-
