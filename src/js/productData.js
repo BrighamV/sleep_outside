@@ -1,3 +1,4 @@
+const baseURL = 'http://157.201.228.93:2992/'
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -7,14 +8,12 @@ function convertToJson(res) {
 }
 
 export default class ProductData {
-  constructor(category) {
-    this.category = category;
-    this.path = `../json/${this.category}.json`;
+  constructor() {
+
   }
-  getData() {
-    return fetch(this.path)
-      .then(convertToJson)
-      .then((data) => data);
+  getData(category) {
+    return fetch(baseURL + `products/search/${category}`)
+      .then(convertToJson).then((data) => data.Result);
   }
   async findProductById(id) {
     const products = await this.getData();

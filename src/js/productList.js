@@ -10,7 +10,7 @@ export default class ProductListing {
   }
   async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
-    let list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
 
     // product ids to filter out
     const filterout = ["989CG", "880RT"];
