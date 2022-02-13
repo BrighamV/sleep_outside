@@ -244,3 +244,24 @@ footer {
   display: none;
   visibility: hidden;
 }
+
+.categories{
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+}
+
+.categories li{
+  flex: 1 1 45%;
+  margin: 0.25em;
+  padding: 0.5em;
+  max-width: 250px;
+}
+
+.categories-link{
+  text-decoration: none;
+  font-size: var(--large-font);
+  color: var(--dark-grey);
+  text-align: center;
+}

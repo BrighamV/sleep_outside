@@ -13,11 +13,11 @@ export default class ProductListing {
     const list = await this.dataSource.getData(this.category);
 
     // product ids to filter out
-    const filterout = ["989CG", "880RT"];
-    // go through the list and filter out each item we don't want
-    filterout.forEach((filterElement) => {
-      list = list.filter((element) => element.Id != filterElement);
-    });
+    // const filterout = ["989CG", "880RT"];
+    // // go through the list and filter out each item we don't want
+    // filterout.forEach((filterElement) => {
+    //   list = list.filter((element) => element.Id != filterElement);
+    // });
     this.renderList(list);
   }
 
@@ -44,7 +44,12 @@ export default class ProductListing {
   //   })
   // }
   prepareTemplate(template, product) {
-    template.querySelector("a").href += product.Id;
+    let newLink = window.location.href;
+    let listIndex =  newLink.indexOf("/product-listing");
+    newLink = newLink.substring(0,listIndex) + "/product_pages/product-details.html/" + product.Id;
+
+    console.log(newLink);
+    template.querySelector("a").href = newLink;
     template.querySelector("img").src = product.Image;
     template.querySelector("img").alt += product.Name;
     template.querySelector(".card__brand").textContent = product.Brand.Name;
@@ -53,7 +58,7 @@ export default class ProductListing {
     template.querySelector(".product-card__price").textContent +=
       product.FinalPrice;
     template.querySelector(".card__discount").textContent = Math.round((1 - (product.FinalPrice / product.SuggestedRetailPrice)) * 100) + "% off";
-
+    
     return template;
   }
 }
