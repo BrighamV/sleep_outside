@@ -26,6 +26,8 @@ export default class ProductListing {
     this.listElement.innerHTML = "";
     //get the template
     const template = document.getElementById("product-card-template");
+    // set the title
+    document.querySelector(".title").innerHTML = this.category;
     renderListWithTemplate(
       template,
       this.listElement,
@@ -44,13 +46,12 @@ export default class ProductListing {
   //   })
   // }
   prepareTemplate(template, product) {
-    let newLink = window.location.href;
-    let listIndex =  newLink.indexOf("/product-listing");
-    newLink = newLink.substring(0,listIndex) + "/product_pages/product-details.html/" + product.Id;
-
-    console.log(newLink);
-    template.querySelector("a").href = newLink;
-    template.querySelector("img").src = product.Image;
+    // generate the new link for the product page
+    let productLink = window.location.href;
+    let listIndex =  productLink.indexOf("/product-listing");
+    productLink = productLink.substring(0,listIndex) + "/product_pages/product-details.html?product=" + product.Id;
+    template.querySelector("a").href = productLink;
+    template.querySelector("img").src = product.Images.PrimaryMedium;
     template.querySelector("img").alt += product.Name;
     template.querySelector(".card__brand").textContent = product.Brand.Name;
     template.querySelector(".card__name").textContent =

@@ -16,10 +16,10 @@ export default class ProductData {
       .then(convertToJson).then((data) => data.Result);
   }
   async findProductById(id) {
-    const products = await this.getData();
-    return products.find((item) => item.Id === id);
+    // const products = await this.getData();
+    // return products.find((item) => item.Id === id);
         // the API allows us to pull products directly from it by ID...so we can change this method as well to take advantage of that.
-        // return await fetch(baseURL + `product/${id}`).then(convertToJson)
-        // .then((data) => data.Result);
+        return await fetch(baseURL + `product/${id}`).then(convertToJson)
+        .then((data) => data.Result);
   }
 }

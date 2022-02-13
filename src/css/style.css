@@ -162,6 +162,13 @@ button:hover {
 .card__discount{
   color: var(--secondary-color);
 }
+
+/* to center the product images */
+.card__img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 /* End product list card */
 
 .product-detail {
