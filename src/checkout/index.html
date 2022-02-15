@@ -44,6 +44,43 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
+      <form>
+        <fieldset>
+          <!-- make everything required! -->
+          <legend>Shipping</legend>
+          <label for="fname">First Name</label>
+          <input type="text" name="fname"> <br>
+          <label for="lname">Last Name</label>
+          <input type="text" name="lname"> <br>
+          <label for="street">Street</label>
+          <input type="text" name="street"> <br>
+          <label for="city">City</label>
+          <input type="text" name="city"> <br>
+          <label for="state">State</label>
+          <input type="text" name="state"> <br>
+          <!-- after the zip code is filled in, calculate everything -->
+          <label for="zip">Zip</label>
+          <input type="number" name="zip"> <br>
+        </fieldset>
+        <fieldset>
+          <legend>Payment</legend>
+          <label for="cardnum">Card Number</label> 
+          <input type="number" name="cardnum"> <br>
+          <label for="exp">Expiration</label> 
+          <input type="month" name="exp"><br>
+          <label for="security">Security Code</label> 
+          <input type="number" name="security"> <br>
+        </fieldset>
+        <fieldset>
+          <legend>Order Summary</legend>
+          <!-- use a grid to format this -->
+          <p>Item Subtotal</p>
+          <p>Shipping Estimate</p>
+          <p>Tax</p>  
+          <p><b>Order Total</b></p>  
+        </fieldset>
+        <button>Checkout</button>
+      </form>
     </main>
     <footer>&copy;NOT a real business</footer>
   </body>
