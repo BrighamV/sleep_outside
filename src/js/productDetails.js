@@ -8,15 +8,34 @@ export default class ProductDetails {
     this.cart = [];
   }
   addToCart(e) {
-    // const product = products.find((item) => item.Id === e.target.dataset.id);
+    // const product = this.products.find((item) => item.Id === e.target.dataset.id);
+    let foundItem = false;
+    for (var cartItem of this.cart) {
+      if (this.productId === cartItem.Id){
+        // if the product is found, update the quantity
+        cartItem.qty += 1;
+        foundItem = true;
+      } else if(foundItem){
+        // break out of the loop, if the product is found
+        break;
+      }
+    }
+    if(!foundItem){
+      // if not fount add a quantity variable to the product and set it to one
+      this.product["qty"] = 1;
+      this.cart.push(this.product);
+    }
+
     // A new product is pushed onto the cart
-    this.cart.push(this.product);
+    
     setLocalStorage("so-cart", this.cart);
   }
 
   renderProductDetails() {
     // note will have to use specific names
-    let discount = Math.round((1 - (this.product.FinalPrice / this.product.SuggestedRetailPrice)) * 100);
+    let discount = Math.round(
+      (1 - this.product.FinalPrice / this.product.SuggestedRetailPrice) * 100
+    );
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
         <h2 class="divider">${this.product.NameWithoutBrand}</h2>
         <img

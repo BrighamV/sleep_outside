@@ -1,6 +1,6 @@
 import ProductData from "./productData.js";
 import ProductListing from "./productList.js";
-import { loadHeaderFooter,getParams } from "./utils.js";
+import { loadHeaderFooter, getParams } from "./utils.js";
 
 const category = getParams("category");
 const data = new ProductData();

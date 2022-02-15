@@ -159,12 +159,12 @@ button:hover {
 .card__name {
   font-size: 1em;
 }
-.card__discount{
+.card__discount {
   color: var(--secondary-color);
 }
 
 /* to center the product images */
-.card__img{
+.card__img {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -252,21 +252,21 @@ footer {
   visibility: hidden;
 }
 
-.categories{
+.categories {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
   padding: 0;
 }
 
-.categories li{
+.categories li {
   flex: 1 1 45%;
   margin: 0.25em;
   padding: 0.5em;
   max-width: 250px;
 }
 
-.categories-link{
+.categories-link {
   text-decoration: none;
   font-size: var(--large-font);
   color: var(--dark-grey);

@@ -48,8 +48,11 @@ export default class ProductListing {
   prepareTemplate(template, product) {
     // generate the new link for the product page
     let productLink = window.location.href;
-    let listIndex =  productLink.indexOf("/product-listing");
-    productLink = productLink.substring(0,listIndex) + "/product_pages/product-details.html?product=" + product.Id;
+    let listIndex = productLink.indexOf("/product-listing");
+    productLink =
+      productLink.substring(0, listIndex) +
+      "/product_pages/product-details.html?product=" +
+      product.Id;
     template.querySelector("a").href = productLink;
     template.querySelector("img").src = product.Images.PrimaryMedium;
     template.querySelector("img").alt += product.Name;
@@ -58,8 +61,11 @@ export default class ProductListing {
       product.NameWithoutBrand;
     template.querySelector(".product-card__price").textContent +=
       product.FinalPrice;
-    template.querySelector(".card__discount").textContent = Math.round((1 - (product.FinalPrice / product.SuggestedRetailPrice)) * 100) + "% off";
-    
+    template.querySelector(".card__discount").textContent =
+      Math.round(
+        (1 - product.FinalPrice / product.SuggestedRetailPrice) * 100
+      ) + "% off";
+
     return template;
   }
 }

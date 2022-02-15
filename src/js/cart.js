@@ -132,27 +132,49 @@ export function removeFromCart(id){
   let newCart = [];
   let foundItem = false;
   // remove the item from so-cart
-  for (var item of cartItems){
-    if(!foundItem){
-      // don't add the item to the new cart, if found
-      if(item.Id === id){
-        foundItem = true;
-      } else {
-        newCart.push(item);
-      }
-    } else {
-      newCart.push(item);
-    }
-  }
+  // for (var item of cartItems){
+  //   if(!foundItem){
+  //     // don't add the item to the new cart, if found
+  //     if(item.Id === id){
+  //       if(item.qty === 1)
+  //         foundItem = true;
+  //       else{
+  //         // decrement the qty by 1 and add the item to the cart if the qty is not 1
+  //         item.qty--;
+  //         newCart.push(item);
+  //       }
+  //     } else {
+  //       newCart.push(item);
+  //     }
+  //   } else {
+  //     newCart.push(item);
+  //   }
+  // }
+
+  // cartItems.forEach((item) => {
+  //   if(item.Id === id){
+  //     item.qty--;
+  //     // if(item.qty === 0){
+  //     //   cartItems.splice(cartItems.indexOf(item),cartItems.indexOf(item) + 1);
+  //     // }
+  // }});
+
+  // cartItems.map((item) => {
+  //   if(item.Id === id){
+  //     item.qty--;
+  //     console.log("did it!");
+  //   }
+  // });
+
+  // TODO: GET REMOVE FROM CART TO WORK!!!
+  
     // set the new cart to the one without the removed item
-  setLocalStorage("so-cart", newCart);
-// reload the cart contents on the page
-  // getCartContents();
+  setLocalStorage("so-cart", cartItems);
+  // reload the cart contents on the page
   cart.init();
-  // try to call the function instead of reloading the page
-  // location.reload();
-// if the cart is empty, hide the total
-if(newCart.length === 0){
+
+if(cartItems.length === 0){
   document.querySelector(".cart-footer").classList.add("hide");
 }
+
 }
