@@ -6,12 +6,37 @@ export default class ProductDetails {
     this.product = {};
     this.dataSource = dataSource;
     this.cart = [];
+    
   }
   addToCart(e) {
     // const product = products.find((item) => item.Id === e.target.dataset.id);
     // A new product is pushed onto the cart
     this.cart.push(this.product);
     setLocalStorage("so-cart", this.cart);
+    const logo = document.querySelector(".cart");
+    let x = 1;
+    let y = 1;
+    // Animates the cart for a few seconds. 
+    const myInt = setInterval(() => {
+        if (x < 1.5) {
+          x += .1;
+          y += .1;
+        } else {
+          x = 1;
+          y = 1;
+        }
+        
+        logo.style.transform = `scale(${x},${y})`;
+    }, 1000/3);
+
+    setTimeout(() => {
+      clearInterval(myInt);
+    }, 5000);
+    // this gets the number of items in the local storage for the cart's superscript
+    let number = localStorage.getItem("so-cart");
+    console.log(Math.round(Object.keys(number).length / 1152));
+    let items = Math.round(Object.keys(number).length / 1152);
+    document.querySelector("#superScript").innerHTML = items;
   }
 
   renderProductDetails() {

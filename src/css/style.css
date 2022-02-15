@@ -107,9 +107,14 @@ button:hover {
   position: relative;
   text-align: center;
 }
+#superScript {
+  border: #303030 solid;
+  border-radius: 20px;
+  font-size: 11px;
+}
 
 .cart svg {
-  width: 25px;
+  width: 35px;
 }
 .cart:hover svg {
   fill: gray;
@@ -243,4 +248,14 @@ footer {
 .hide {
   display: none;
   visibility: hidden;
+}
+#newsLetter {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+}
+#newsLetter label {
+  padding: 10px;
 }
