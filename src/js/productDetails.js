@@ -31,7 +31,7 @@ export default class ProductDetails {
 
     setTimeout(() => {
       clearInterval(myInt);
-    }, 5000);
+    }, 4000);
     // this gets the number of items in the local storage for the cart's superscript
     let number = localStorage.getItem("so-cart");
     console.log(Math.round(Object.keys(number).length / 1152));
