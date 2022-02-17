@@ -53,15 +53,25 @@ export async function loadTemplate(path) {
   return template;
 }
 
-
+function getTotalNumItems() {
+  // this gets the number of items in the local storage for the cart's superscript
+  let number = localStorage.getItem("so-cart");
+  console.log(Math.round(Object.keys(number).length / 1152));
+  let items = Math.round(Object.keys(number).length / 1152);
+  // document.querySelector("#superScript").innerHTML = items;
+  return items;
+}
 
 export async function loadHeaderFooter() {
   const head = await loadTemplate("../partials/header.html");
   const foot = await loadTemplate("../partials/footer.html");
   const header = document.getElementById("main-header");
   const footer = document.getElementById("main-footer");
+  
   renderWithTemplate(head, header);
   renderWithTemplate(foot, footer);
+  let items = getTotalNumItems();
+  document.querySelector("#superScript").innerHTML = items;
 }
 function convertToText(res) {
   if (res.ok) {
