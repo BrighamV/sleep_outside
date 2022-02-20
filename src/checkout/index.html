@@ -44,7 +44,7 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
-      <form>
+      <form class="checkout-form">
         <fieldset>
           <!-- make everything required! -->
           <legend>Shipping</legend>
@@ -62,6 +62,7 @@
           <label for="zip">Zip</label>
           <input type="number" name="zip"> <br>
         </fieldset>
+        <br>
         <fieldset>
           <legend>Payment</legend>
           <label for="cardnum">Card Number</label> 
@@ -71,15 +72,18 @@
           <label for="security">Security Code</label> 
           <input type="number" name="security"> <br>
         </fieldset>
+        <br>
         <fieldset>
           <legend>Order Summary</legend>
           <!-- use a grid to format this -->
-          <p>Item Subtotal</p>
-          <p>Shipping Estimate</p>
-          <p>Tax</p>  
-          <p><b>Order Total</b></p>  
+          <p>Item Subtotal:</p>
+          <p>Shipping Estimate:</p>
+          <p>Tax:</p>  
+          <p><b>Order Total:</b></p>  
         </fieldset>
+        <br>
         <button>Checkout</button>
+        <br>
       </form>
     </main>
     <footer>&copy;NOT a real business</footer>
