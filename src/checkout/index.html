@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Checkout</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <script src="../js/checkout.js" type="module"></script>
   </head>
   <body>
     <header class="divider">
@@ -60,7 +61,7 @@
           <input type="text" name="state"> <br>
           <!-- after the zip code is filled in, calculate everything -->
           <label for="zip">Zip</label>
-          <input type="number" name="zip"> <br>
+          <input type="number" name="zip" id="zip"> <br>
         </fieldset>
         <br>
         <fieldset>
@@ -76,13 +77,13 @@
         <fieldset>
           <legend>Order Summary</legend>
           <!-- use a grid to format this -->
-          <p>Item Subtotal:</p>
-          <p>Shipping Estimate:</p>
-          <p>Tax:</p>  
-          <p><b>Order Total:</b></p>  
+          <p id="subtotal">Item Subtotal: </p>
+          <p id="shippingEst">Shipping Estimate: </p>
+          <p id="tax">Tax: </p>  
+          <p id="orderTotal"><b>Order Total:</b> </p>  
         </fieldset>
         <br>
-        <button>Checkout</button>
+        <button id="checkoutSubmit">Checkout</button>
         <br>
       </form>
     </main>

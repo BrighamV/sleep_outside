@@ -10,3 +10,4 @@ export default class Alert{
         return JSON.parse(localStorage.getItem(key));
     }
 }
+}
