@@ -272,3 +272,16 @@ footer {
   color: var(--dark-grey);
   text-align: center;
 }
+
+.checkout a{
+  text-decoration: none;
+}
+
+.checkout-form input{
+  margin: 5px;
+  width: 100%;
+}
+.checkout-form fieldset{
+  width: 400px;
+  margin: auto;
+}

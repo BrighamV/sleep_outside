@@ -35,6 +35,11 @@ export default class CartList {
     // render the total in the cart
     document.querySelector(".cart-total").innerHTML = `Total: $${total}`;
   }
+  
+  renderCheckoutButton() {
+  // remove the hide class
+  document.querySelector(".checkout").classList.remove("hide");
+}
 
   renderList(list) {
     // make sure the list is empty
@@ -55,7 +60,8 @@ export default class CartList {
     }
     // render the total if there are items in the cart
     if (total > 0) {
-      this.renderTotal(total);
+      this.renderTotal(total.toFixed(2));
+      this.renderCheckoutButton();
     }
     //   // you can add an event listener to the parent class, since that exists in the DOM
     //   // then check to see if what is clicked has the class "cart-card__remove"
