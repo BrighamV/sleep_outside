@@ -210,6 +210,15 @@ button:hover {
 .cart-card__quantity {
   grid-row: 1;
   grid-column: 3;
+  margin-left: 35px;
+  width:40px;
+  margin-top: -20px;
+}
+
+.cart-card__quantity_label{
+  grid-row: 1;
+  grid-column: 3;
+  margin-top: -20px;
 }
 
 .cart-card__remove {
@@ -285,3 +294,4 @@ footer {
   width: 400px;
   margin: auto;
 }
+

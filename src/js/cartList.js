@@ -3,7 +3,7 @@ import {
   getLocalStorage,
   setLocalStorage,
 } from "./utils.js";
-import { removeFromCart } from "./cart.js";
+import { removeFromCart, changeQuantity } from "./cart.js";
 export default class CartList {
   constructor(key, listElement) {
     this.key = key;
@@ -23,7 +23,8 @@ export default class CartList {
     template.querySelector(".cart-card__color").textContent =
       product.Colors[0].ColorName;
     template.querySelector(".cart-card__remove").setAttribute("id", product.Id);
-    template.querySelector(".cart-card__quantity").textContent += product.qty;
+    template.querySelector(".cart-card__quantity").value = product.qty;
+    template.querySelector(".cart-card__quantity").setAttribute("id", product.Id);
     template.querySelector(".cart-card__price").textContent +=
       product.FinalPrice;
     return template;
@@ -70,6 +71,14 @@ export default class CartList {
       .addEventListener("click", function (e) {
         if (e.target.classList == "cart-card__remove") {
           removeFromCart(e.target.id);
+        }
+      });
+
+      document
+      .querySelector(".product-list")
+      .addEventListener("change", function (e) {
+        if (e.target.classList == "cart-card__quantity") {
+          changeQuantity(e.target.id, e.target.value);
         }
       });
   }

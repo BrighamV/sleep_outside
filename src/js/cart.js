@@ -142,4 +142,19 @@ export function removeFromCart(id){
 
   // it won't work properly unless the page re-loads (multiple get removed at once)
   location.reload();
+
+}
+
+export function changeQuantity(id, quantity){
+  const cartItems = getLocalStorage("so-cart");
+  cartItems.forEach((item) => {
+    if(item.Id === id){
+      item.qty = quantity;
+      if(item.qty <= 0){
+        cartItems.splice(cartItems.indexOf(item),cartItems.indexOf(item) + 1);
+      }
+  }});
+
+  setLocalStorage("so-cart", cartItems); 
+  location.reload();
 }
