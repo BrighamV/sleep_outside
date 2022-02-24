@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.js";
+import { getLocalStorage, setLocalStorage } from "./utils.js";
 import ExternalServices from "./externalServices.js";
 
 const services = new ExternalServices();
@@ -90,7 +90,10 @@ export default class CheckoutProcess{
         try {
         const res = await services.checkout(json);
         console.log(res);
+        setLocalStorage('so-cart', []);
+        window.location.href = "./checkout.html";
         } catch (err) {
+
         console.log(err);
         }
         }

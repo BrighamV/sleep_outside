@@ -1,9 +1,10 @@
 const baseURL = "http://157.201.228.93:2992/";
 function convertToJson(res) {
+  let jsonResponse = res.json();
   if (res.ok) {
-    return res.json();
+    return jsonResponse;
   } else {
-    throw new Error("Bad Response");
+    throw { name: 'services error', message: jsonResponse};
   }
 }
 
