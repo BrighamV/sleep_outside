@@ -1,4 +1,4 @@
-import { setLocalStorage } from "./utils.js";
+import { setLocalStorage, getTotalNumItems } from "./utils.js";
 import { getLocalStorage } from "./utils.js";
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -49,7 +49,7 @@ export default class ProductDetails {
     setTimeout(() => {
       clearInterval(myInt);
     }, 4000);
-    
+    getTotalNumItems();
   }
 
   renderProductDetails() {

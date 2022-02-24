@@ -53,13 +53,18 @@ export async function loadTemplate(path) {
   return template;
 }
 
-function getTotalNumItems() {
+export function getTotalNumItems() {
   // this gets the number of items in the local storage for the cart's superscript
-  let number = localStorage.getItem("so-cart");
-  console.log(Math.round(Object.keys(number).length / 1152));
-  let items = Math.round(Object.keys(number).length / 1152);
+  let cart = getLocalStorage("so-cart");
+  console.log(cart)
+  let number = cart.reduce(function(sum, item) {
+    return sum + item.qty;
+  }, 0)
+  console.log(number);
+  // let items = Math.round(Object.keys(number).length / 1152);
   // document.querySelector("#superScript").innerHTML = items;
-  return items;
+  document.querySelector("#superScript").innerHTML = number
+
 }
 
 export async function loadHeaderFooter() {
@@ -70,8 +75,8 @@ export async function loadHeaderFooter() {
   
   renderWithTemplate(head, header);
   renderWithTemplate(foot, footer);
-  let items = getTotalNumItems();
-  document.querySelector("#superScript").innerHTML = items;
+  getTotalNumItems();
+ 
 }
 function convertToText(res) {
   if (res.ok) {

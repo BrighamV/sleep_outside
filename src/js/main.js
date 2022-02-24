@@ -10,3 +10,7 @@ const list = new ProductListing(
 );
 list.init();
 loadHeaderFooter();
+
+document.querySelector("#newsButton").addEventListener("click", (e) => {
+  document.querySelector(".thanks").innerHTML = "Thank you for signing up!"
+})
