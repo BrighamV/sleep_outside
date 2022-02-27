@@ -211,11 +211,11 @@ button:hover {
   grid-row: 1;
   grid-column: 3;
   margin-left: 35px;
-  width:40px;
+  width: 40px;
   margin-top: -20px;
 }
 
-.cart-card__quantity_label{
+.cart-card__quantity_label {
   grid-row: 1;
   grid-column: 3;
   margin-top: -20px;
@@ -282,16 +282,36 @@ footer {
   text-align: center;
 }
 
-.checkout a{
+.checkout a {
   text-decoration: none;
 }
 
-.checkout-form input{
+.checkout-form input {
   margin: 5px;
   width: 100%;
 }
-.checkout-form fieldset{
+.checkout-form fieldset {
   width: 400px;
   margin: auto;
 }
 
+/* alert styles */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  background-color: var(--primary-color);
+  border: 1px solid darkorange;
+}
+.alert > p {
+  margin: 0;
+}
+
+.alert > span {
+  cursor: pointer;
+}
+
+.alert > span:hover {
+  color: red;
+}

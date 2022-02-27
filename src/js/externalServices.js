@@ -4,14 +4,12 @@ function convertToJson(res) {
   if (res.ok) {
     return jsonResponse;
   } else {
-    throw { name: 'services error', message: jsonResponse};
+    throw { name: "services error", message: jsonResponse };
   }
 }
 
 export default class ExternalServices {
-  constructor() {
-
-  }
+  constructor() {}
   getData(category) {
     return fetch(baseURL + `products/search/${category}`)
       .then(convertToJson)

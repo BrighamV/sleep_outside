@@ -1,5 +1,4 @@
-import { setLocalStorage } from "./utils.js";
-import { getLocalStorage } from "./utils.js";
+import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.js";
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -11,24 +10,25 @@ export default class ProductDetails {
     // const product = this.products.find((item) => item.Id === e.target.dataset.id);
     let foundItem = false;
     for (var cartItem of this.cart) {
-      if (this.productId === cartItem.Id){
+      if (this.productId === cartItem.Id) {
         // if the product is found, update the quantity
         cartItem.qty += 1;
         foundItem = true;
-      } else if(foundItem){
+      } else if (foundItem) {
         // break out of the loop, if the product is found
         break;
       }
     }
-    if(!foundItem){
+    if (!foundItem) {
       // if not fount add a quantity variable to the product and set it to one
       this.product["qty"] = 1;
       this.cart.push(this.product);
     }
 
     // A new product is pushed onto the cart
-    
+
     setLocalStorage("so-cart", this.cart);
+    alertMessage("Item successfully added to cart.");
   }
 
   renderProductDetails() {

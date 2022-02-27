@@ -24,7 +24,9 @@ export default class CartList {
       product.Colors[0].ColorName;
     template.querySelector(".cart-card__remove").setAttribute("id", product.Id);
     template.querySelector(".cart-card__quantity").value = product.qty;
-    template.querySelector(".cart-card__quantity").setAttribute("id", product.Id);
+    template
+      .querySelector(".cart-card__quantity")
+      .setAttribute("id", product.Id);
     template.querySelector(".cart-card__price").textContent +=
       product.FinalPrice;
     return template;
@@ -36,11 +38,11 @@ export default class CartList {
     // render the total in the cart
     document.querySelector(".cart-total").innerHTML = `Total: $${total}`;
   }
-  
+
   renderCheckoutButton() {
-  // remove the hide class
-  document.querySelector(".checkout").classList.remove("hide");
-}
+    // remove the hide class
+    document.querySelector(".checkout").classList.remove("hide");
+  }
 
   renderList(list) {
     // make sure the list is empty
@@ -74,7 +76,7 @@ export default class CartList {
         }
       });
 
-      document
+    document
       .querySelector(".product-list")
       .addEventListener("change", function (e) {
         if (e.target.classList == "cart-card__quantity") {
