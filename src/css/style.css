@@ -315,3 +315,11 @@ footer {
 .alert > span:hover {
   color: red;
 }
+
+.breadcrumbs{
+  margin-top: 10px;
+}
+
+.breadcrumbs a{
+  text-decoration: none;
+}

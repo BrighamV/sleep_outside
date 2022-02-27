@@ -1,4 +1,5 @@
 import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.js";
+import { displayProductPageBreadcrumbs } from "./breadcrumbs.js";
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -72,5 +73,8 @@ export default class ProductDetails {
     document
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
+
+    // add breadcrumbs to the page
+    displayProductPageBreadcrumbs(this.product);
   }
 }

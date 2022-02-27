@@ -1,4 +1,5 @@
 import { renderListWithTemplate } from "./utils.js";
+import { displayProductListingBreadcrumbs } from "./breadcrumbs.js"
 
 export default class ProductListing {
   constructor(category, dataSource, listElement) {
@@ -11,7 +12,8 @@ export default class ProductListing {
   async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
     const list = await this.dataSource.getData(this.category);
-
+    // add the breadcrumbs to the product listing page
+    displayProductListingBreadcrumbs(this.category, list.length);
     // product ids to filter out
     // const filterout = ["989CG", "880RT"];
     // // go through the list and filter out each item we don't want
