@@ -11,3 +11,7 @@ const list = new ProductListing(
 );
 list.init();
 loadHeaderFooter();
+
+// event listener "change" grab value and call sort function
+// let type = document.querySelector(".sort_by").value
+// console.log(type);

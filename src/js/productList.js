@@ -10,15 +10,27 @@ export default class ProductListing {
   }
   async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
-    const list = await this.dataSource.getData(this.category);
+    const list = await getProducts();
 
     // product ids to filter out
     // const filterout = ["989CG", "880RT"];
     // // go through the list and filter out each item we don't want
     // filterout.forEach((filterElement) => {
-    //   list = list.filter((element) => element.Id != filterElement);
+    //   list = list.filter((element) => element.Id != filterElement); 
     // });
     this.renderList(list);
+  }
+
+  async getProducts() {
+    return await this.dataSource.getData(this.category);
+
+  }
+
+  sortList(sortDirection) {
+    const list = await getProducts();
+    // if to sort
+    // call renderList to refresh the page
+
   }
 
   renderList(list) {
