@@ -6,6 +6,7 @@ export default class ProductDetails {
     this.product = {};
     this.dataSource = dataSource;
     this.cart = [];
+    // TODO: make this set to the default color, then display it in the code!!!
     this.selectedColor = "";
   }
   addToCart(e) {
@@ -79,6 +80,8 @@ export default class ProductDetails {
     displayProductPageBreadcrumbs(this.product);
   }
   // use this to get the colors then style them somehow (make them selectable)
+  // add event listeners to each and make it so that it changes the color value!!!
+  // maybe make it a box with an image kind of like amazon does, but make it different!!!
   getColors(){
     let colorHMTL = "";
     this.product.Colors.forEach(color => {
@@ -86,12 +89,15 @@ export default class ProductDetails {
       <img
           class="divider"
           src="${color.ColorChipImageSrc}"
-          alt="${color.ColorName}}"
+          alt="${color.ColorName}}" width="50"
+          height="50"
         />
       <img
           class="divider"
           src="${color.ColorPreviewImageSrc}"
           alt="${color.ColorName}}"
+          width="50"
+          height="50"
         />
       `
     });
