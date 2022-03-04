@@ -42,6 +42,19 @@ export default class ExternalServices {
       },
       body: JSON.stringify(creds),
     };
-    return await fetch(baseURL + "login/", options).then(convertToJson);
+    const response = await fetch(baseURL + "login/", options).then(convertToJson);
+    return response.accessToken;
   }
+
+  async getOrders(token) {
+    const options = {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      }
+    };
+    console.log(options);
+    return await fetch(baseURL + "orders", options).then(convertToJson);
+  }
+
 }

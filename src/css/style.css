@@ -336,3 +336,26 @@ footer {
   width: 400px;
   margin: auto;
 }
+
+/* styling for the orders */
+.orders-table{
+  margin: auto;
+  width: 85%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.orders-table > thead, td {
+  padding: 15px;
+  border: 1px solid var(--dark-grey);
+}
+
+/* highlights the row when hovered over */
+/* .orders-table tr:hover{
+  background-color: var(--secondary-color);
+  color: white;
+} */
+
+.orders-table > thead{
+  background-color: var(--primary-color);
+}
