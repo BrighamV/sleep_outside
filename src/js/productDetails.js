@@ -6,6 +6,7 @@ export default class ProductDetails {
     this.product = {};
     this.dataSource = dataSource;
     this.cart = [];
+    this.selectedColor = "";
   }
   addToCart(e) {
     // const product = this.products.find((item) => item.Id === e.target.dataset.id);
@@ -76,5 +77,24 @@ export default class ProductDetails {
 
     // add breadcrumbs to the page
     displayProductPageBreadcrumbs(this.product);
+  }
+  // use this to get the colors then style them somehow (make them selectable)
+  getColors(){
+    let colorHMTL = "";
+    this.product.Colors.forEach(color => {
+      colorHMTL += `
+      <img
+          class="divider"
+          src="${color.ColorChipImageSrc}"
+          alt="${color.ColorName}}"
+        />
+      <img
+          class="divider"
+          src="${color.ColorPreviewImageSrc}"
+          alt="${color.ColorName}}"
+        />
+      `
+    });
+    return colorHMTL;
   }
 }

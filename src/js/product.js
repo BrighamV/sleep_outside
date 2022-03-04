@@ -6,5 +6,6 @@ const productId = getParams("product");
 const dataSource = new ExternalServices();
 console.log(productId);
 const product = new ProductDetails(productId, dataSource);
+console.log(product);
 product.init();
 product.loadCart();
