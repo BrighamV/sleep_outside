@@ -1,5 +1,5 @@
 import { renderListWithTemplate } from "./utils.js";
-import { displayProductListingBreadcrumbs } from "./breadcrumbs.js"
+import { displayProductListingBreadcrumbs } from "./breadcrumbs.js";
 
 export default class ProductListing {
   constructor(category, dataSource, listElement) {

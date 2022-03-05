@@ -34,7 +34,7 @@ export default class ExternalServices {
     return await fetch(baseURL + "checkout/", options).then(convertToJson);
   }
 
-  async loginRequest(creds){
+  async loginRequest(creds) {
     const options = {
       method: "POST",
       headers: {
@@ -42,7 +42,9 @@ export default class ExternalServices {
       },
       body: JSON.stringify(creds),
     };
-    const response = await fetch(baseURL + "login/", options).then(convertToJson);
+    const response = await fetch(baseURL + "login/", options).then(
+      convertToJson
+    );
     return response.accessToken;
   }
 
@@ -50,11 +52,10 @@ export default class ExternalServices {
     const options = {
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${token}`,
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     console.log(options);
     return await fetch(baseURL + "orders", options).then(convertToJson);
   }
-
 }

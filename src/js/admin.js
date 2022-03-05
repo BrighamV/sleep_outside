@@ -15,7 +15,7 @@ export default class Admin {
     // this allows us that flexibility without having to write a bunch of login methods
     try {
       this.token = await this.services.loginRequest(creds);
-      next()
+      next();
     } catch (err) {
       this.handleErrors(err);
     }
@@ -49,13 +49,23 @@ export default class Admin {
     try {
       const orders = await this.services.getOrders(this.token);
       console.log(orders);
-     // change the login section to display the orders instead
+      // change the login section to display the orders instead
       document.querySelector(".login-section").innerHTML = orderHtml();
       const parent = document.querySelector("#orders tbody");
-     // map the orders
-    //   parent.innerHTML = orders.map(order=> `<tr><td>${order.id}</td><td>${new Date(order.orderDate).toLocaleDateString("en-US")}</td><td>${order.items.length}</td><td>$${order.orderTotal}</td></tr>`).join("");
-      parent.innerHTML = orders.map(order=> `<tr><td>${order.id}</td><td>${new Date(order.orderDate).toLocaleDateString("en-US")}</td><td>${order.street}, ${order.city}, ${order.state} ${order.zip}</td><td>${order.items.length}</td><td>$${order.orderTotal}</td></tr>`).join("");
-      
+      // map the orders
+      //   parent.innerHTML = orders.map(order=> `<tr><td>${order.id}</td><td>${new Date(order.orderDate).toLocaleDateString("en-US")}</td><td>${order.items.length}</td><td>$${order.orderTotal}</td></tr>`).join("");
+      parent.innerHTML = orders
+        .map(
+          (order) =>
+            `<tr><td>${order.id}</td><td>${new Date(
+              order.orderDate
+            ).toLocaleDateString("en-US")}</td><td>${order.street}, ${
+              order.city
+            }, ${order.state} ${order.zip}</td><td>${
+              order.items.length
+            }</td><td>$${order.orderTotal}</td></tr>`
+        )
+        .join("");
     } catch (err) {
       this.handleErrors(err);
     }
@@ -74,7 +84,7 @@ export default class Admin {
 }
 
 function orderHtml() {
-    return `<h2>Current Orders</h2>
+  return `<h2>Current Orders</h2>
     <table class="orders-table" id="orders">
     <thead>
     <tr><th>Id</th><th>Date</th><th>Address</th><th>#Items</th><th>Total</th>
@@ -82,7 +92,7 @@ function orderHtml() {
     <tbody class="order-body"></tbody>
     </table>
     `;
-  }
+}
 
 let myAdmin = new Admin();
 myAdmin.showLogin();

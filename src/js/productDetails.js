@@ -6,14 +6,28 @@ export default class ProductDetails {
     this.product = {};
     this.dataSource = dataSource;
     this.cart = [];
-    // TODO: make this set to the default color, then display it in the code!!!
     this.selectedColor = "";
   }
   addToCart(e) {
     // const product = this.products.find((item) => item.Id === e.target.dataset.id);
     let foundItem = false;
+    this.product.SelectedColor = this.selectedColor;
+    // change the color image
+    if (this.product.Colors.length != 1) {
+      this.product.Colors.forEach((color) => {
+        if (color.ColorName === this.selectedColor) {
+          this.product.CartImage = color.ColorPreviewImageSrc;
+        }
+      });
+    } else {
+      this.product.CartImage = this.product.Images.PrimaryMedium;
+    }
+
     for (var cartItem of this.cart) {
-      if (this.productId === cartItem.Id) {
+      if (
+        this.productId === cartItem.Id &&
+        this.selectedColor === cartItem.SelectedColor
+      ) {
         // if the product is found, update the quantity
         cartItem.qty += 1;
         foundItem = true;
@@ -27,7 +41,6 @@ export default class ProductDetails {
       this.product["qty"] = 1;
       this.cart.push(this.product);
     }
-
     // A new product is pushed onto the cart
 
     setLocalStorage("so-cart", this.cart);
@@ -46,14 +59,17 @@ export default class ProductDetails {
           src="${this.product.Images.PrimaryLarge}"
           alt="${this.product.NameWithoutBrand}"
         />
+        <p><b>Color:</b> ${this.selectedColor}</p>
+        <div class="product-colors">${this.getColors()}</div>
         <p class="product-card__price">$${this.product.FinalPrice}</p>
         <p class="card__discount">${discount}% off</p>
-        <p class="product__color">${this.product.Colors[0].ColorName}</p>
         <p class="product__description">
         ${this.product.DescriptionHtmlSimple}
         </p>
         <div class="product-detail__add">
-          <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
+          <button id="addToCart" data-id="${
+            this.product.Id
+          }">Add to Cart</button>
         </div></section>`;
   }
   loadCart() {
@@ -68,6 +84,8 @@ export default class ProductDetails {
   async init() {
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
     this.product = await this.dataSource.findProductById(this.productId);
+    // start with the first color
+    this.selectedColor = this.product.Colors[0].ColorName;
     // once we have the product details we can render out the HTML
     document.querySelector("main").innerHTML = this.renderProductDetails();
     // once the HTML is rendered we can add a listener to Add to Cart button
@@ -76,31 +94,68 @@ export default class ProductDetails {
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
 
+    if (this.product.Colors.length != 1) {
+      document.querySelectorAll(".product-colors div").forEach((color) => {
+        color.addEventListener("click", this.changeColor.bind(this));
+      });
+    }
+
     // add breadcrumbs to the page
     displayProductPageBreadcrumbs(this.product);
   }
   // use this to get the colors then style them somehow (make them selectable)
   // add event listeners to each and make it so that it changes the color value!!!
   // maybe make it a box with an image kind of like amazon does, but make it different!!!
-  getColors(){
+  getColors() {
     let colorHMTL = "";
-    this.product.Colors.forEach(color => {
-      colorHMTL += `
-      <img
-          class="divider"
-          src="${color.ColorChipImageSrc}"
-          alt="${color.ColorName}}" width="50"
-          height="50"
-        />
-      <img
-          class="divider"
-          src="${color.ColorPreviewImageSrc}"
-          alt="${color.ColorName}}"
-          width="50"
-          height="50"
-        />
-      `
+    if (this.product.Colors.length === 1) return colorHMTL;
+    this.product.Colors.forEach((color) => {
+      if (color.ColorName === this.selectedColor) {
+        colorHMTL += `
+        <div class="color selected-color" id="${color.ColorName}">
+          <img
+              src="${color.ColorChipImageSrc}"
+              alt="${color.ColorName}}" width="25px"
+              id="${color.ColorName}"
+            />
+          <img
+              src="${color.ColorPreviewImageSrc}"
+              alt="${color.ColorName}}"
+              width="25px"
+              id="${color.ColorName}"
+            />
+        </div>
+        `;
+      } else {
+        colorHMTL += `
+        <div class="color" id="${color.ColorName}">
+        <img
+            src="${color.ColorChipImageSrc}"
+            alt="${color.ColorName}}" width="25px"
+            id="${color.ColorName}"
+          />
+        <img
+            src="${color.ColorPreviewImageSrc}"
+            alt="${color.ColorName}}"
+            width="25px"
+            id="${color.ColorName}"
+          />
+      </div>
+      `;
+      }
     });
     return colorHMTL;
+  }
+  changeColor(e) {
+    // this gets the id out of the element, which will be the product name
+    this.selectedColor = e.srcElement.id;
+    // re-render the products page and adds the event listeners again
+    document.querySelector("main").innerHTML = this.renderProductDetails();
+    document.querySelectorAll(".product-colors div").forEach((color) => {
+      color.addEventListener("click", this.changeColor.bind(this));
+    });
+    document
+      .getElementById("addToCart")
+      .addEventListener("click", this.addToCart.bind(this));
   }
 }

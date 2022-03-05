@@ -316,11 +316,11 @@ footer {
   color: red;
 }
 
-.breadcrumbs{
+.breadcrumbs {
   margin-top: 10px;
 }
 
-.breadcrumbs a{
+.breadcrumbs a {
   text-decoration: none;
 }
 
@@ -338,14 +338,15 @@ footer {
 }
 
 /* styling for the orders */
-.orders-table{
+.orders-table {
   margin: auto;
   width: 85%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
-.orders-table > thead, td {
+.orders-table > thead,
+td {
   padding: 15px;
   border: 1px solid var(--dark-grey);
 }
@@ -356,6 +357,26 @@ footer {
   color: white;
 } */
 
-.orders-table > thead{
+.orders-table > thead {
   background-color: var(--primary-color);
+}
+
+/* for the product colors on the product details pages */
+.product-colors {
+  display: flex;
+  gap: 5px;
+}
+
+.color {
+  padding: 10px;
+  border: 1px solid var(--tertiary-color);
+}
+
+.color:hover {
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+}
+
+.selected-color {
+  border: 1px solid var(--primary-color);
 }

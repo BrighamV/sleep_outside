@@ -16,12 +16,11 @@ export default class CartList {
   }
 
   prepareTemplate(template, product) {
-    template.querySelector(".cart-card__image img").src =
-      product.Images.PrimaryMedium;
+    template.querySelector(".cart-card__image img").src = product.CartImage;
     template.querySelector(".cart-card__image img").alt += product.Name;
     template.querySelector(".card__name").textContent = product.Name;
     template.querySelector(".cart-card__color").textContent =
-      product.Colors[0].ColorName;
+      product.SelectedColor;
     template.querySelector(".cart-card__remove").setAttribute("id", product.Id);
     template.querySelector(".cart-card__quantity").value = product.qty;
     template
