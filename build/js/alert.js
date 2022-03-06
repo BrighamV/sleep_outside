@@ -1,0 +1,1 @@
+export default class e{constructor(o){this.category=o,this.path=`../json/${this.category}.json`;function l(t){return console.log(localStorage.getItem(t)),console.log(JSON.parse(localStorage.getItem(t))),JSON.parse(localStorage.getItem(t))}}}

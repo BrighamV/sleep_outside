@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Outside | Checkout</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <header class="divider" id="main-header"></header>
+    <main class="divider checkout">
+      <section class="products">
+        <h2>Review &amp; Place your Order</h2>
+      </section>
+      <form class="checkout-form" name="checkout">
+        <fieldset>
+          <!-- make everything required! -->
+          <legend>Shipping</legend>
+          <div class="checkout__name">
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" required=""> <br>
+            <label for="lname">Last Name</label>
+            <input type="text" name="lname" required=""> <br>
+          </div>
+          <div class="checkout__address">
+            <label for="street">Street</label>
+            <input type="text" name="street" required=""> <br>
+            <label for="city">City</label>
+            <input type="text" name="city" required=""> <br>
+            <label for="state">State</label>
+            <input type="text" name="state" required=""> <br>
+          </div>
+          <!-- after the zip code is filled in, calculate everything -->
+          <label for="zip">Zip</label>
+          <input name="zip" id="zip" required=""> <br>
+        </fieldset>
+        <br>
+        <fieldset>
+          <legend>Payment</legend>
+          <label for="cardNumber">Card Number</label>
+          <input name="cardNumber" required="" maxlength="16" minlength="16">
+          <br>
+          <label for="expiration">Expiration</label>
+          <input name="expiration" placeholder="mm/yy" required="" maxlength="5"><br>
+          <label for="code">Security Code</label>
+          <input name="code" required="" maxlength="3" minlength="3" placeholder="xxx">
+          <br>
+        </fieldset>
+        <br>
+        <fieldset>
+          <legend>Order Summary</legend>
+          <!-- use a grid to format this -->
+          <p>Item Subtotal: <span id="subtotal"></span></p>
+          <p>Shipping Estimate: <span id="shippingEst"></span></p>
+          <p>Tax: <span id="tax"></span></p>
+          <p><b>Order Total:</b> <span id="orderTotal"></span></p>
+        </fieldset>
+        <br>
+        <button id="checkoutSubmit">Checkout</button>
+        <br>
+      </form>
+    </main>
+    <footer id="main-footer"></footer>
+    <script src="../js/checkout.js" type="module"></script>
+  
+
+</body></html>
