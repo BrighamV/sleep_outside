@@ -10,7 +10,8 @@ export default class ProductListing {
   }
   async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
-    const list = await getProducts();
+    let list = await this.getProducts();
+    this.sortList()
 
     // product ids to filter out
     // const filterout = ["989CG", "880RT"];
@@ -26,10 +27,64 @@ export default class ProductListing {
 
   }
 
-  sortList(sortDirection) {
-    const list = await getProducts();
+  async sortList() {
+    console.log("changed");
+    const list = await this.getProducts();
+    let whichSort = document.querySelector(".sort_by").value;
+    if (whichSort === "Name") {
+      list.sort()
+    } else {
+      list.FinalPrice.sort()
+    }
+    this.renderList(list)
     // if to sort
     // call renderList to refresh the page
+
+
+  //   function sortBy() {
+  //     reset();
+  
+  //     let sort = document.querySelector("#sortBy").value;
+  //     // console.log(sort);
+  //     if (sort == "templeNameAscending") {
+  //         output(temples.sort(temple_sort_A));
+  //     } else if (sort == "templeNameDescending") {
+  //         output(temples.sort(temple_sort_D));
+  //     } else {
+  //         alert("please choose Ascending or Descending")
+  //     }
+  
+  // }
+  
+  // function temple_sort_A(a, b) {
+  //     if (a.templeName < b.templeName) {
+  //       return -1;
+  //     } else if (a.templeName > b.templeName) {
+  //       return 1;
+  //     } else {
+  //       return 0;
+  //     }
+  //   }
+  
+  //   function temple_sort_D(a, b) {
+  //     if (a.templeName > b.templeName) {
+  //       return -1;
+  //     } else if (a.templeName < b.templeName) {
+  //       return 1;
+  //     } else {
+  //       return 0;
+  //     }
+  //   }
+
+
+
+
+
+
+
+
+
+
 
   }
 
