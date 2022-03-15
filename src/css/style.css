@@ -107,6 +107,11 @@ button:hover {
   position: relative;
   text-align: center;
 }
+#superScript {
+  border: #303030 solid;
+  border-radius: 20px;
+  font-size: 11px;
+}
 
 .cart svg {
   width: 25px;

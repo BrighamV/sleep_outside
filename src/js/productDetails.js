@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.js";
+import { setLocalStorage, getLocalStorage, alertMessage, getTotalNumItems } from "./utils.js";
 import { displayProductPageBreadcrumbs } from "./breadcrumbs.js";
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -44,6 +44,27 @@ export default class ProductDetails {
     // A new product is pushed onto the cart
 
     setLocalStorage("so-cart", this.cart);
+    const logo = document.querySelector(".cart");
+    let x = 1;
+    let y = 1;
+    // Animates the cart for a few seconds. 
+    const myInt = setInterval(() => {
+        if (x < 1.5) {
+          x += .1;
+          y += .1;
+        } else {
+          x = 1;
+          y = 1;
+        }
+        
+        logo.style.transform = `scale(${x},${y})`;
+    }, 1000/3);
+
+    setTimeout(() => {
+      clearInterval(myInt);
+    }, 4000);
+    getTotalNumItems();
+  
     alertMessage("Item successfully added to cart.");
   }
 
